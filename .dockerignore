@@ -1,0 +1,15 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
+#
+# Generated on 2021-05-07T17:06:21Z by kres latest.
+
+**
+!debug.go
+!debug_off.go
+!debug_off_test.go
+!debug_on.go
+!debug_on_test.go
+!go.mod
+!go.sum
+!.golangci.yml
+!README.md
+!.markdownlint.json
