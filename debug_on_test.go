@@ -4,7 +4,7 @@
 
 // +build sidero.debug
 
-package debug
+package debug //nolint:testpackage // to test unexported method
 
 import (
 	"testing"

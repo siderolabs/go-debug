@@ -2,12 +2,13 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-// debug is a Sidero-specific library for including debugging facilities for developers in our products
+// Package debug is a Sidero-specific library for including debugging facilities for developers in our products
 // when they are compiled with sidero.debug build tag. They are not included by default.
 package debug
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"net/http"
 	"reflect"
@@ -59,11 +60,11 @@ func ListenAndServe(ctx context.Context, addr string, log LogFunc) error {
 	go func() {
 		<-ctx.Done()
 
-		_ = s.Close()
+		_ = s.Close() //nolint:errcheck
 	}()
 
 	err := s.ListenAndServe()
-	if err == http.ErrServerClosed {
+	if errors.Is(err, http.ErrServerClosed) {
 		return nil
 	}
 
