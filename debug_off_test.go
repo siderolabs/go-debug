@@ -7,6 +7,7 @@
 package debug //nolint:testpackage // to test unexported method
 
 import (
+	"runtime"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,4 +16,6 @@ import (
 func TestDebugOff(t *testing.T) {
 	expected := []string{}
 	assert.Equal(t, expected, handlers())
+
+	assert.Equal(t, 0, runtime.MemProfileRate)
 }

@@ -7,4 +7,6 @@
 package debug
 
 // Enabled is false when compiled without sidero.debug build tag.
+//
+// Profiling is disabled to safe resources as a side-effect of importing this package.
 const Enabled = false

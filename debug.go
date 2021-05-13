@@ -36,16 +36,6 @@ func ListenAndServe(ctx context.Context, addr string, log LogFunc) error {
 		return nil
 	}
 
-	// that's defaults, just make them explicit
-	runtime.SetCPUProfileRate(100)
-	runtime.MemProfileRate = 512 * 1024
-
-	// https://github.com/DataDog/go-profiler-notes/blob/main/block.md#overhead
-	runtime.SetBlockProfileRate(10000)
-
-	// no science behind that value
-	runtime.SetMutexProfileFraction(10000)
-
 	log("starting debug server")
 
 	for _, h := range handlers() {
@@ -84,4 +74,23 @@ func handlers() []string {
 	sort.Strings(res)
 
 	return res
+}
+
+func init() {
+	if !Enabled {
+		// explicitly disable memory profiling to save around 1.4MiB of memory
+		runtime.MemProfileRate = 0
+
+		return
+	}
+
+	// that's defaults, just make them explicit
+	runtime.SetCPUProfileRate(100)
+	runtime.MemProfileRate = 512 * 1024
+
+	// https://github.com/DataDog/go-profiler-notes/blob/main/block.md#overhead
+	runtime.SetBlockProfileRate(10000)
+
+	// no science behind that value
+	runtime.SetMutexProfileFraction(10000)
 }
