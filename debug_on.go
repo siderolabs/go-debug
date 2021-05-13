@@ -16,4 +16,6 @@ import (
 )
 
 // Enabled is true when compiled with sidero.debug build tag.
+//
+// Profiling rates are configured as a side-effect of importing this package.
 const Enabled = true
