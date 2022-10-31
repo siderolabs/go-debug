@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2021-05-07T17:06:21Z by kres latest.
+# Generated on 2022-10-31T17:44:33Z by kres 03328da.
 
 **
 !debug.go
@@ -8,6 +8,8 @@
 !debug_off_test.go
 !debug_on.go
 !debug_on_test.go
+!race_off.go
+!race_on.go
 !go.mod
 !go.sum
 !.golangci.yml

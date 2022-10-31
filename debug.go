@@ -29,9 +29,9 @@ type LogFunc func(msg string)
 //
 // Both cases can be handled with the following code:
 //
-//   if err := debug.ListenAndServe(ctx, addr, log); err != nil {
-//       log.Fatal(err)
-//   }
+//	if err := debug.ListenAndServe(ctx, addr, log); err != nil {
+//	    log.Fatal(err)
+//	}
 func ListenAndServe(ctx context.Context, addr string, log LogFunc) error {
 	if !Enabled {
 		return nil
