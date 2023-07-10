@@ -1,10 +1,10 @@
 module github.com/siderolabs/go-debug
 
-go 1.19
+go 1.20
 
 require (
-	github.com/stretchr/testify v1.8.1
-	golang.org/x/net v0.1.0
+	github.com/stretchr/testify v1.8.4
+	golang.org/x/net v0.12.0
 )
 
 require (

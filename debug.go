@@ -12,6 +12,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"reflect"
 	"runtime"
 	"sort"
@@ -77,8 +78,14 @@ func handlers() []string {
 	return res
 }
 
+func pprofEnabled() bool {
+	env, ok := os.LookupEnv("GO_DEBUG_PPROF_ENABLED")
+
+	return ok && (env == "true" || env == "1" || env == "on" || env == "yes" || env == "t")
+}
+
 func init() {
-	if !Enabled {
+	if !Enabled && !pprofEnabled() {
 		// explicitly disable memory profiling to save around 1.4MiB of memory
 		runtime.MemProfileRate = 0
 

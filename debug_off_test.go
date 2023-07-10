@@ -14,8 +14,12 @@ import (
 )
 
 func TestDebugOff(t *testing.T) {
-	expected := []string{}
-	assert.Equal(t, expected, handlers())
+	assert.Empty(t, handlers())
 
-	assert.Equal(t, 0, runtime.MemProfileRate)
+	switch pprofEnabled() {
+	case true:
+		assert.Equal(t, 524288, runtime.MemProfileRate)
+	case false:
+		assert.Equal(t, 0, runtime.MemProfileRate)
+	}
 }
