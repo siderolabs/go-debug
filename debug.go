@@ -13,9 +13,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"reflect"
 	"runtime"
-	"sort"
 )
 
 // LogFunc is a simplest logging function.
@@ -61,21 +59,6 @@ func ListenAndServe(ctx context.Context, addr string, log LogFunc) error {
 	}
 
 	return err
-}
-
-// handlers returns all patterns registered on the default HTTP server mux.
-// Useful to check for unexpected handlers.
-func handlers() []string {
-	keys := reflect.ValueOf(http.DefaultServeMux).Elem().FieldByName("m").MapKeys()
-
-	res := make([]string, len(keys))
-	for i, v := range keys {
-		res[i] = v.String()
-	}
-
-	sort.Strings(res)
-
-	return res
 }
 
 func pprofEnabled() bool {

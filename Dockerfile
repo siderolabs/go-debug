@@ -1,8 +1,8 @@
-# syntax = docker/dockerfile-upstream:1.5.2-labs
+# syntax = docker/dockerfile-upstream:1.6.0-labs
 
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2023-07-10T16:20:59Z by kres latest.
+# Generated on 2024-02-08T22:38:02Z by kres latest.
 
 ARG TOOLCHAIN
 
@@ -10,9 +10,9 @@ ARG TOOLCHAIN
 FROM scratch AS generate
 
 # runs markdownlint
-FROM docker.io/node:20.3.1-alpine3.18 AS lint-markdown
+FROM docker.io/node:21.6.1-alpine3.19 AS lint-markdown
 WORKDIR /src
-RUN npm i -g markdownlint-cli@0.34.0
+RUN npm i -g markdownlint-cli@0.39.0
 RUN npm i sentences-per-line@0.2.1
 COPY .markdownlint.json .
 COPY ./README.md ./README.md
@@ -27,6 +27,10 @@ FROM --platform=${BUILDPLATFORM} toolchain AS tools
 ENV GO111MODULE on
 ARG CGO_ENABLED
 ENV CGO_ENABLED ${CGO_ENABLED}
+ARG GOTOOLCHAIN
+ENV GOTOOLCHAIN ${GOTOOLCHAIN}
+ARG GOEXPERIMENT
+ENV GOEXPERIMENT ${GOEXPERIMENT}
 ENV GOPATH /go
 ARG DEEPCOPY_VERSION
 RUN --mount=type=cache,target=/root/.cache/go-build --mount=type=cache,target=/go/pkg go install github.com/siderolabs/deep-copy@${DEEPCOPY_VERSION} \
@@ -55,6 +59,8 @@ COPY ./debug.go ./debug.go
 COPY ./debug_off.go ./debug_off.go
 COPY ./debug_off_test.go ./debug_off_test.go
 COPY ./debug_on.go ./debug_on.go
+COPY ./debug_on_121.go ./debug_on_121.go
+COPY ./debug_on_122.go ./debug_on_122.go
 COPY ./debug_on_test.go ./debug_on_test.go
 COPY ./race_off.go ./race_off.go
 COPY ./race_on.go ./race_on.go
