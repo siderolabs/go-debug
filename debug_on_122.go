@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //
-//go:build go1.22 && !go1.23
+//go:build go1.22 && !go1.24
 
 package debug
 
@@ -21,7 +21,7 @@ func handlers() []string {
 	pLen := patterns.Len()
 
 	res := make([]string, pLen)
-	for i := 0; i < pLen; i++ {
+	for i := range pLen {
 		res[i] = patterns.Index(i).Elem().FieldByName("str").String()
 	}
 
