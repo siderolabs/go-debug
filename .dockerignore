@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2024-08-15T08:25:14Z by kres 7be2a05.
+# Generated on 2025-02-13T20:16:28Z by kres 2b55dd5.
 
 *
 !debug.go
@@ -11,6 +11,8 @@
 !debug_on_122.go
 !debug_on_122_test.go
 !debug_on_123_test.go
+!debug_on_124.go
+!debug_on_124_test.go
 !race_off.go
 !race_on.go
 !go.mod
