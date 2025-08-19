@@ -1,8 +1,9 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2025-02-13T20:16:28Z by kres 2b55dd5.
+# Generated on 2025-08-19T12:05:47Z by kres d1ef768.
 
 *
+!internal
 !debug.go
 !debug_off.go
 !debug_off_test.go
@@ -13,6 +14,7 @@
 !debug_on_123_test.go
 !debug_on_124.go
 !debug_on_124_test.go
+!debug_on_125_test.go
 !race_off.go
 !race_on.go
 !go.mod
@@ -20,3 +22,4 @@
 !.golangci.yml
 !README.md
 !.markdownlint.json
+!hack/govulncheck.sh

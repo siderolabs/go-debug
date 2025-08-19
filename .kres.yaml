@@ -2,3 +2,7 @@
 kind: service.CodeCov
 spec:
   targetThreshold: 30
+---
+kind: golang.Generate
+spec:
+  versionPackagePath: internal/version
