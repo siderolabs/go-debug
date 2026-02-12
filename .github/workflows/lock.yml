@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2025-08-19T10:19:30Z by kres ff3b493.
+# Generated on 2026-02-12T17:24:59Z by kres 84d286e.
 
 "on":
   schedule:
@@ -14,7 +14,7 @@ jobs:
       - ubuntu-latest
     steps:
       - name: Lock old issues
-        uses: dessant/lock-threads@v5.0.1
+        uses: dessant/lock-threads@7266a7ce5c1df01b1c6db85bf8cd86c737dadbe7 # version: v6.0.0
         with:
           issue-inactive-days: "60"
           log-output: "true"

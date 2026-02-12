@@ -77,6 +77,7 @@ func init() {
 
 	// that's defaults, just make them explicit
 	runtime.SetCPUProfileRate(100)
+
 	runtime.MemProfileRate = 512 * 1024
 
 	// https://github.com/DataDog/go-profiler-notes/blob/main/block.md#overhead

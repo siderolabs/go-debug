@@ -1,18 +1,18 @@
-# syntax = docker/dockerfile-upstream:1.19.0-labs
+# syntax = docker/dockerfile-upstream:1.21.0-labs
 
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2025-10-08T09:20:50Z by kres 063080a.
+# Generated on 2026-02-12T17:24:59Z by kres 84d286e.
 
-ARG TOOLCHAIN
+ARG TOOLCHAIN=scratch
 
 # runs markdownlint
-FROM docker.io/oven/bun:1.2.23-alpine AS lint-markdown
+FROM docker.io/oven/bun:1.3.9-alpine AS lint-markdown
 WORKDIR /src
-RUN bun i markdownlint-cli@0.45.0 sentences-per-line@0.3.0
+RUN bun i markdownlint-cli@0.47.0 sentences-per-line@0.5.1
 COPY .markdownlint.json .
 COPY ./README.md ./README.md
-RUN bunx markdownlint --ignore "CHANGELOG.md" --ignore "**/node_modules/**" --ignore '**/hack/chglog/**' --rules sentences-per-line .
+RUN bunx markdownlint --ignore "CHANGELOG.md" --ignore "**/node_modules/**" --ignore '**/hack/chglog/**' --rules markdownlint-sentences-per-line .
 
 # base toolchain image
 FROM --platform=${BUILDPLATFORM} ${TOOLCHAIN} AS toolchain
@@ -60,6 +60,7 @@ COPY ./debug_on_123_test.go ./debug_on_123_test.go
 COPY ./debug_on_124.go ./debug_on_124.go
 COPY ./debug_on_124_test.go ./debug_on_124_test.go
 COPY ./debug_on_125_test.go ./debug_on_125_test.go
+COPY ./debug_on_126_test.go ./debug_on_126_test.go
 COPY ./race_off.go ./race_off.go
 COPY ./race_on.go ./race_on.go
 RUN --mount=type=cache,target=/go/pkg,id=go-debug/go/pkg go list -mod=readonly all >/dev/null
